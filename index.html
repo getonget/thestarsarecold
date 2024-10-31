@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microsoft Edge</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden;
+        }
+        
+        canvas { 
+            display: block; 
+        }
+        
+        #chat-window {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 250px;
+            height: 300px;
+            background-color: rgba(70, 70, 70, 0.2);
+            backdrop-filter: blur(2px);
+            border-radius: 8px;
+            border: 1px solid rgba(200, 200, 200, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            resize: both;
+            min-width: 200px;
+            min-height: 250px;
+        }
+
+        #chat-header {
+            padding: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #chat-content {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        #chat-buttons {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-button {
+            padding: 5px;
+            font-size: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .chat-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-animation {
+            animation: messageAppear 0.5s ease-out forwards;
+        }
+
+        #chat-content > div {
+            transition: all 0.3s ease;
+        }
+        
+        #chat-content > div:hover {
+            transform: scale(1.02);
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        #chat-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #chat-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        #chat-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-window">
+        <div id="chat-header">talk to the star!</div>
+        <div id="chat-content"></div>
+        <div id="chat-buttons">
+            <button class="chat-button" onclick="showMessage('Greetings! I\'m shining extra bright today just to say hello to you! ✨')">Howdy!</button>
+            <button class="chat-button" onclick="showMessage('Absolutely stellar! Been sparkling non-stop and spreading light across the universe. How about yours? 🌟')">How is your day?</button>
+            <button class="chat-button" onclick="showMessage('It\'s quite a responsibility, you know! Always having to shine, guide travelers, and be part of constellations. But I wouldn\'t have it any other way! ⭐')">How it feels like to be a star?</button>
+            <button class="chat-button" onclick="showMessage('Paracetamol! ✨')">Hi doctor what is this</button>
+            <button class="chat-button" onclick="showMessage('Idk why ask me? ✨')">How should i prepare for winter arc?</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
